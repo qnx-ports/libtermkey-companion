@@ -1,0 +1,38 @@
+# Alpine-Contributor: Marvin Preuss <marvin@xsteadfastx.org>
+# Alpine-Maintainer: Celeste <cielesti@protonmail.com>
+# Maintainer: Ethan Leir <eleir@qnx.com>
+pkgname=libtermkey
+pkgver=0.22
+pkgrel=1
+pkgdesc="Library for easy processing of keyboard entry from terminal-based programs"
+url="https://www.leonerd.org.uk/code/libtermkey"
+arch="all"
+license="MIT"
+depends="unibilium"
+depends_dev="unibilium-dev ncurses-dev"
+makedepends="$depends_dev libtool perl pkgconf pkgconf-dev"
+subpackages="$pkgname-doc $pkgname-dev"
+source="https://www.leonerd.org.uk/code/libtermkey/libtermkey-$pkgver.tar.gz
+    build-static-lib.patch
+    qnx-verbose-tests.patch
+    "
+
+build() {
+    make PREFIX=/usr
+}
+
+check() {
+    make test
+}
+
+package() {
+    make PREFIX=/usr DESTDIR="$pkgdir" install
+
+    install -Dvm644 LICENSE -t "$pkgdir"/system/share/licenses/$pkgname/
+}
+
+sha512sums="
+2e8242cd1e6acb8900125dcee9fd47f7554c359363f760b88858c82667e1f3871bdd87358b14c8a133ef3cd2699947a5045477e64cdf7f96d4ead1723e73a219  libtermkey-0.22.tar.gz
+2409db3e3abebf5e67b693d077fae473c3f586915682713b0aecd81abec50e23f41ded3131295290d33a5b0124115fce3455ad7e9a29d7d2d52583abee5e01a1  build-static-lib.patch
+550ba720b61cd57f15fb9ee40741d7d0f6b7e08592447fcab9988948bea5733067ff43f9b6e88868bc495f1208f06bbe7a541b47e4a954ed19b6aee1302bb909  qnx-verbose-tests.patch
+"

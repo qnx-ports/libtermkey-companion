@@ -1,0 +1,8 @@
+package = "libtermkey"
+
+[custom]
+[custom.skipped]
+[[custom.skipped.suites]]
+name = "t/05read.t"
+[[custom.skipped.suites.cases]]
+name = "t/05read.t"

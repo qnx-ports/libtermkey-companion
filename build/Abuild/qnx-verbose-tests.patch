@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 199f143..9a0b04f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -92,7 +92,7 @@ t/taplib.lo: t/taplib.c
+ 
+ .PHONY: test
+ test: $(TESTFILES)
+-	prove -e ""
++	prove -v -f --nocolor --norc -e ""
+ 
+ .PHONY: clean-test
+ clean-test:
