@@ -3,7 +3,7 @@
 # Maintainer: Ethan Leir <eleir@qnx.com>
 pkgname=libtermkey
 pkgver=0.22
-pkgrel=${pkgrel:-0}
+pkgrel=1
 pkgdesc="Library for easy processing of keyboard entry from terminal-based programs"
 url="https://www.leonerd.org.uk/code/libtermkey"
 arch="all"
@@ -31,7 +31,6 @@ package() {
     install -Dvm644 LICENSE -t "$pkgdir"/system/share/licenses/$pkgname/
 }
 
-options="$options ${DISABLE_CHECK:+!check}"
 sha512sums="
 2e8242cd1e6acb8900125dcee9fd47f7554c359363f760b88858c82667e1f3871bdd87358b14c8a133ef3cd2699947a5045477e64cdf7f96d4ead1723e73a219  libtermkey-0.22.tar.gz
 2409db3e3abebf5e67b693d077fae473c3f586915682713b0aecd81abec50e23f41ded3131295290d33a5b0124115fce3455ad7e9a29d7d2d52583abee5e01a1  build-static-lib.patch
